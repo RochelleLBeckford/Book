@@ -20,6 +20,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        <p>I really like the book</p>
         <table class="table table-hover border border-5">
             <tbody>
                 <tr>
@@ -28,26 +29,35 @@
                     <th>Pages</th>
                     <th>Description</th>
                 </tr>
-                <tr>
+                    <!-- the list is working but now need to loop over it -->
+                    <!-- <c:out value="${books}"/> -->
                     <!--
                     ~ Java equivalent of Jinja
                     -> take data from controller and have it render on my view
                     -> give it a value attribute
                     -> then what we want to render on page
                     -->
-                    <td>
-                        <c:out value="${title}"/>
-                    </td>
-                    <td>
-                        <c:out value="${author}"/>
-                    </td>
-                    <td>
-                        <c:out value="${pages}"/>
-                    </td>
-                    <td>
-                        <c:out value="${description}"/>
-                    </td>
-                </tr>
+                    <!-- 
+                        -> var is the variable for iteration -> the variable of iteration can be anything but the items have to be named after the array 
+                        -> items is the artray name 
+                        -> naming variable conventions -> want someone after you to look at your code and understand what you were trying to do 
+                    -->
+                    <c:forEach var="book" items="${books}">
+                        <tr>
+                            <td>
+                                ${book.title}
+                            </td>
+                            <td>
+                                ${book.author}
+                            </td>
+                            <td>
+                                ${book.pages}
+                            </td>
+                            <td>
+                                ${book.description}
+                            </td>
+                        </tr>
+                    </c:forEach>
             </tbody>
         </table>
         <a class="btn btn-primary" href="/books/new">Add a Book</a>
